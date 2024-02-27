@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Randomize Meme Builder | Barlas Meme Builder - Randomize">
+  <meta name="keywords" content="random, meme, builder, barlas, barlas meme, barlas meme builder,meme builder, memes">
+  <title>Random Meme Builder | Barlas</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+  
+  .meme-container {
+      border: #f8f9fa 1px solid;
+  }
+</style>
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4 text-center">Randomize Meme Builder</h1>
+    <div id="memeContainer" class="text-center">
+      <img src="" id="memeImg" class="img-fluid meme-container" alt="Meme">
+    </div>
+    <button id="getMemeBtn" class="btn btn-primary mt-3 d-block mx-auto">Get New Meme</button>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var memeImg = document.getElementById("memeImg");
+  var getMemeBtn = document.getElementById("getMemeBtn");
+
+  getMemeBtn.addEventListener("click", function() {
+    fetchMeme();
+  });
+
+  function fetchMeme() {
+    fetch("https://meme-api.com/gimme/wholesomememes")
+      .then(response => response.json())
+      .then(data => {
+        memeImg.src = data.url;
+      })
+      .catch(error => {
+        console.error("Error fetching meme:", error);
+      });
+  }
+
+  // Sayfa yüklendiğinde ilk meme'i getir
+  fetchMeme();
+});
+
+  </script>
+</body>
+</html>
