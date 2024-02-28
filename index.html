@@ -18,7 +18,7 @@
   }
 </style>
 <body>
-  <div class="container mt-5">
+  <div class="container mt-5 shadow p-3 mb-5 bg-white rounded">
     <h1 class="mb-4 text-center">Randomize Meme Builder</h1>
     <div id="memeContainer" class="text-center">
       <img src="" id="memeImg" class="img-fluid meme-container" alt="Meme">
@@ -34,7 +34,6 @@
   getMemeBtn.addEventListener("click", function() {
     fetchMeme();
   });
-
   function fetchMeme() {
     fetch("https://meme-api.com/gimme/wholesomememes")
       .then(response => response.json())
@@ -45,11 +44,8 @@
         console.error("Error fetching meme:", error);
       });
   }
-
-  // Sayfa yüklendiğinde ilk meme'i getir
   fetchMeme();
 });
-
   </script>
 </body>
 </html>
